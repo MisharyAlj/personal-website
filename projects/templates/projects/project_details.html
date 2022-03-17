@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block page_title %}
+<!--  if the project has a title display the title in the {title tag},
+    else just display Project for the title  -->
+{% if project.title %}
+<title>Project - {{ project.title }}</title>
+{% else %}
+<title>Project</title>
+{% endif %}
+{% endblock page_title %}
+
+{% block sections %}
+<!-- ***************  Project  **************** -->
+<div class="container project-container">
+    <div class="content-container py-2 px-3">
+        <h3>{{ project.title }}</h3>
+
+        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for image in project.images_set.all %}
+                <div class="carousel-item my-4 {% if forloop.first %}active {% endif %}">
+                    <div class="slider">
+                        <img src="{{ image.image.url }}" alt="{{ image.id }}">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="project-content">
+            <div class="technology">
+                <h6>{{project.technology}}</h6>
+                <h6>{{project.language}}</h6>
+            </div>
+            <p>{{project.description}}</p>
+            {% if project.url %}
+            <a class=" btn btn-outline-dark mb-2" href="{{ project.url }}" target="_blank">{{ project.title }}
+                URL</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock sections %}

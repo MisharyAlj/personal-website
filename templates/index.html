@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block page_title %}
+<title>{{ page_title | capfirst }}</title>
+{% endblock page_title %}
+
+{% block content %}
+<!-- ***************  ABOUT / PROFILE  **************** -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="about-container">
+            <div class="about-content d-inline-block p-2">
+                <div class="about-text">
+                    <h6><span> Hello,</span> my name is</h6>
+                    <h1>Mishary Aljarie</h1>
+                    <h6>And I'm a <span>Developer</span></h6>
+                </div>
+                <p><a class="btn btn-outline-dark mt-2" href="{% static 'projects/Mishary Aljarie - CV.pdf' %}"
+                        download>Download CV</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+<!-- ************ PROJECTS / PORTFOLIO / EDUCATION  ************** -->
+{% block sections %}
+<section class="projects-section" id="projects">
+    <div class="container pt-5 pb-2">
+        <div class="content-container pt-1 pb-4 px-4">
+            <h2>Projects</h2>
+            <div class="row">
+                {% for project in projects %}
+                <!-- Project n -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <div class="card card-shadow">
+                        <img src="{{ project.images_set.all.0.image.url }}" class="card-img-top" alt="project1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <!--  only display the first 45 words in the descrption -->
+                            <p class="card-text">{{ project.description|truncatewords:40 }}
+                                {% if project.url %}
+                                <a class="d-inline-block mb-2" href="{{ project.url }}" target="_blank">
+                                    {{project.title}} URL</a>
+                                {% endif %}
+                            </p>
+                            <a href="{{ project.pk }}"
+                                class="btn btn-outline-dark {% if not project.url %} stretched-link {% endif %}">Read
+                                more</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</section>
+
+<!-- ******************  EDUCATION & CERTIFICATIONS ****************** -->
+<section class="education-section" id="education">
+    <div class="container pb-4">
+        <hr>
+        <div class="content-container pt-1 pb-3 px-3">
+            <h2>Education</h2>
+
+            <section class="section-info">
+                <ul>
+                    <h5>King Khalid University - Saudi Arabia, Abha</h4>
+                        <p class="anim-p">Bachelor's degree of Computer Sciencs, 2016-2021</p>
+
+                </ul>
+            </section>
+
+        </div>
+    </div>
+</section>
+{% endblock sections%}

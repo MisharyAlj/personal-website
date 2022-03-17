@@ -1,0 +1,330 @@
+/*=============== VARIABLES ===============*/
+:root{
+    /*============== the 60-30-10 rule ==============*/
+    /* 60% for the primary color, 30% for the secondary color, 10% for the accent color*/
+    --primary-color: #fff; 
+    --secondary-color: #191645;
+    --accent-color: #43C6AC;
+}
+
+/*=============== GLOBAL ===============*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Fredoka', sans-serif; */
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+}
+html{
+    background-color: rgba(2, 7, 31, 0.95);
+}
+body{
+    overflow-x: hidden;
+    color: var(--secondary-color);
+}
+h2{
+    font-weight: 600;
+}
+
+p{
+    font-weight: 500;
+}
+img{
+    width: 300px;
+    border-radius: 5px;
+}
+a,a:hover{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.content-wrap{
+    margin: 0 30px 0 30px;
+    padding: 15px 0 15px 0;
+}
+.flex{
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+hr{
+    color: var(--secondary-color);
+}
+/*=============== PRIMARY NAVIGATION ===============*/
+.logo{
+    width: 15%;
+    height: 15%;    
+    margin: 0 .8rem;
+}
+.primary-header{
+    display: flex;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+}
+.mobile-nav-toggle{
+    display: none;
+}
+.primary-navigation{
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    background: hsl(0 0% 0% / .75);
+    border-radius: 5px 0 5px 0;
+}
+.primary-navigation a{
+    color: var(--primary-color);
+    position: relative;
+}
+.primary-navigation a::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    transition: width 250ms;
+}
+.primary-navigation li a:hover::after{
+    width: 75%;
+}
+.primary-navigation li{
+    margin-inline-end: .8em;
+    margin-inline-start: .8em;
+}
+.primary-navigation a > span{
+    font-weight: 600;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--secondary-color);
+    margin-inline-end: .65em;
+}
+/* If the browse support backdrop-flter apply this background/filter */
+@supports(backdrop-filter: blur(1rem)){
+    .primary-navigation{
+        background: hsl(0 0% 0% / .3);
+        backdrop-filter: blur(1rem);
+    }
+    .logo-container.scrolled{
+        background: hsl(0 0% 0% / .3);
+        backdrop-filter: blur(1rem);
+    }
+    .about-content{
+        background: hsl(0 0% 100% / .1);
+        backdrop-filter: blur(1rem);
+    }
+}
+
+/*=============== ABOUT / PROFILE ===============*/
+.about-section{
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,.3)50%,rgba(0,0,0,.3)50%), url("images/background.jpg") no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+/* Center the div vertically*/
+.about-container{
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    
+}
+.about-content{
+    padding: 5px 30px 5px 10px;
+    background: hsl(0 0% 100% / .1);
+    border-radius: .8rem;
+}
+.about-container h6{
+    display: inline;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+.about-container h6> span{
+    font-weight: 400;
+}
+.about-container h1{
+    font-size: 4rem;
+    color: transparent;
+    font-weight: 600;
+    -webkit-text-stroke: 2px var(--primary-color);
+}
+.about-text span, h1 {
+    transition:  .5s;
+}
+.about-text:hover span, .about-text:hover h1 {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.699),
+                0 0 20px rgba(0, 0, 0, 0.74);
+    transition:  .5s;
+}
+.btn-outline-dark{
+    color: var(--accent-color);
+    border: 1px var(--accent-color) solid;
+}
+.btn-outline-dark:hover{
+    background: var(--accent-color);
+    border: 1px var(--accent-color) solid;
+}
+
+/*=============== PROJECTS ===============*/
+.content-container{
+    border-top: 1px solid var(--secondary-color);
+    border-left: 1px solid var(--secondary-color);
+    background: hsl(0 0% 100% / .1);
+    backdrop-filter: blur(1rem);
+    border-radius: .8rem;
+    box-shadow: 10px 10px 15px rgb(0 0 0 / 35%);
+}
+.card-shadow{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    box-shadow: 10px 10px 15px rgb(0 0 0 / 35%);
+}
+.test-card{
+    background: linear-gradient(38deg, #cabbc3 0%, #94b5ccb6 100%);
+    box-shadow: 10px 10px 15px rgb(0 0 0 / 35%);
+}
+
+/*=============== EDUCATION ===============*/
+
+/*=============== FOOTER ===============*/
+
+.progect-details{
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*=============== PROJECT DETAILS ===============*/
+.project-container{
+    height: fit-content;
+    min-height: 85vh;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+}
+.slider{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.slider img{
+    width: fit-content;
+    height: 50vh;
+    object-fit: contain;
+}
+.technology{
+    display: flex;
+    justify-content: space-between;
+}
+.technology > h6{
+    display: inline;
+    font-weight: 700; 
+}
+
+/*=============== Media ===============*/
+@media (max-width: 42em) {
+    /*=============== PRIMARY NAVIGATION/HEADER ===============*/
+    .primary-header{
+        padding: 1.5rem 1rem;
+    }
+    .primary-navigation{
+        --gap: 2em;
+
+        position: fixed;
+        z-index: 90;
+        inset: 0 0 0 30%;
+
+        display: flex;
+        flex-direction: column;
+        padding: min(30vh, 10rem) 2em;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-in;
+    }
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0%);
+    }
+    .mobile-nav-toggle{
+        display: block;
+        position: absolute;
+        background: url("images/menu.svg") no-repeat;
+        width: 1.5rem;
+        border: 0;
+        aspect-ratio: 1;
+        top: 1.5rem;
+        right: 1rem;
+        z-index: 100;
+        transition: 250ms ease-in;
+    }
+    .mobile-nav-toggle[aria-expanded="true"]{
+        background: url("images/close.svg") no-repeat;
+        transition: 150ms ease-in;
+    }
+    
+    /*=============== ABOUT / PROFILE ===============*/
+    .about-container {
+        width: auto;
+        padding: 0 1rem;
+    }
+    .about-container h6{
+        font-size: 1rem;
+    }
+    .about-container h1{
+        font-size: 2rem;
+        -webkit-text-stroke: 1px var(--secondary-color);
+    }
+    
+    /*=============== PROJECTS / PORTFOLIO ===============*/
+    .projects-section h2{
+        font-size: 1.50rem;
+    }
+    
+    /*=============== Education ===============*/
+    .education-section h2{
+        font-size: 1.50rem;
+    }
+    .education-section h4{
+        font-size: 1.2rem;
+    }
+    .education-section p{
+        font-weight: 300;
+    }
+    
+    /*=============== PROJECT-DETILS ===============*/
+    .project-container{
+        padding-top: 5rem;
+    }
+    .slider img{
+        width: 97%;
+        height: 30vh;
+        object-fit: cover;
+    }
+}
+
+.soon-img{
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+/* @keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+} */
