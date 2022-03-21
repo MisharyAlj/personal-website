@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projects.apps.ProjectsConfig',
     'django_extensions',  # For generating a secret key.
+    'storages',
 ]
 
 MIDDLEWARE = [
