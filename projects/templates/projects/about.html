@@ -1,5 +1,8 @@
 {% extends 'base.html'%}
 {% load static %}
+{% block page_title %}
+<title>{{ page_title|capfirst }}</title>
+{% endblock %}
 {% block sections %}
 <div class="container project-container">
     <div class="content-container text-center pt-3 mt-4 pb-4 px-3">
