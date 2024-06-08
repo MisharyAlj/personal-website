@@ -11,7 +11,7 @@ def index(request):
     context = {
         'page_title': "Mishary",
         'projects': projects,
-        'Certificates': certificates,
+        'certificates': certificates,
     }
     return render(request, 'index.html', context)
 
