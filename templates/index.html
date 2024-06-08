@@ -31,16 +31,18 @@
     <div class="container pt-5 pb-2">
         <div class="content-container pt-1 pb-4 px-4">
             <h2>Projects</h2>
-            <div class="row">
+            <div class="masonry">
                 {% for project in projects %}
                 <!-- Project n -->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+                <div class="masonry-item">
                     <div class="card card-shadow">
-                        <img src="{{ project.images_set.all.0.image.url }}" class="card-img-top" alt="project1">
+                        {% if project.images_set.all.0.image.url is not None %}
+                        <img src="{{ project.images_set.all.0.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ project.title }}</h5>
                             <!--  only display the first 45 words in the descrption -->
-                            <p class="card-text">{{ project.description|truncatewords:40 }}
+                            <p class="card-text">{{ project.description|truncatewords:71 }}
                                 {% if project.url %}
                                 <a class="d-inline-block mb-2" href="{{ project.url }}" target="_blank">
                                     {{project.title}} URL</a>
@@ -64,13 +66,15 @@
         <div class="content-container pt-1 pb-3 px-3">
             <h2>Education</h2>
 
-            <section class="section-info">
+            {% for certificat in certificates %}
+            <section class="section-info mb-3">
                 <ul>
-                    <h5>King Khalid University - Saudi Arabia, Abha</h4>
-                        <p class="anim-p">Bachelor's degree of Computer Sciencs, 2016-2021</p>
+                    <h5>{{ certificat.title }}</h4>
+                        <p class="anim-p">{{ certificat.description }}</p>
 
                 </ul>
             </section>
+            {% endfor %}
 
         </div>
     </div>
