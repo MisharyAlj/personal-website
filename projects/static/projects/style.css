@@ -211,17 +211,27 @@ h1 {
 
 /*=============== PROJECTS ===============*/
 .content-container {
-    border-top: 1px solid var(--secondary-color);
-    border-left: 1px solid var(--secondary-color);
+    /*border-top: 1px solid var(--secondary-color);
+    border-left: 1px solid var(--secondary-color);*/
     background: hsl(0 0% 100% / .1);
     backdrop-filter: blur(1rem);
     border-radius: .8rem;
     box-shadow: 10px 10px 15px rgb(0 0 0 / 35%);
 }
 
+.masonry {
+    column-count: 3;
+    column-gap: 1em;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1em;
+}
+
 .card-shadow {
-    color: var(--primary-color);
-    background: var(--secondary-color);
+    color: var(--secondary-color);
+    /*background: var(--secondary-color);*/
     box-shadow: 10px 10px 15px rgb(0 0 0 / 35%);
 }
 

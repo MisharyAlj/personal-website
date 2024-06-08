@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from .models import Project, Images
+from .models import Project, Images, Certificates
 
 # Create your views here.
 
 
 def index(request):
     projects = Project.objects.all()
+    certificates = Certificates.objects.all()
 
     context = {
         'page_title': "Mishary",
         'projects': projects,
+        'Certificates': certificates,
     }
     return render(request, 'index.html', context)
 
